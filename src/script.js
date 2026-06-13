@@ -1,3 +1,5 @@
+import "./style.css"
+
 const taskInput = document.querySelector("#taskInput");
 const deadlineInput = document.querySelector("#deadlineInput");
 const btnAddTask = document.querySelector("#btnAddTask");
