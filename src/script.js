@@ -1,4 +1,4 @@
-import "./style.css"
+import  "./style.css"
 
 const taskInput = document.querySelector("#taskInput");
 const deadlineInput = document.querySelector("#deadlineInput");
@@ -16,6 +16,7 @@ function inputsReset() {
 }
 
 let arr = [];
+
 
 function toLocalDatetimeValue(date = new Date()) {
   const pad = (n) => String(n).padStart(2, "0");
@@ -83,6 +84,7 @@ function getRemainingTime(deadline) {
 // افزودن تسک جدید
 function addItemToList(e) {
   e.preventDefault();
+  
   const newItem = {
     task: taskInput.value,
     deadline: deadlineInput.value,
@@ -102,6 +104,7 @@ if (picked <= now) {
     errorText.innerHTML = "*Inputs can not be empty";
   } else {
     arr.push(newItem);
+    
     localStorage.setItem("myList", JSON.stringify(arr));
     renderList();
     errorText.innerHTML = "";
@@ -119,7 +122,14 @@ function sortTasksByDeadline() {
 }
 
 function renderList() {
-  list.innerHTML = ""; 
+  list.innerHTML = "";
+  if (arr.length === 0) {
+    list.classList.add("hidden");
+    return; 
+  } else {
+    
+    list.classList.remove("hidden");
+  }
   sortTasksByDeadline(); 
   arr.forEach((item) => {
     list.insertAdjacentHTML("beforeend", createList(item)); 
@@ -169,7 +179,7 @@ function checkTimers() {
     const remainingTime = getRemainingTime(item.deadline);
 
     if (remainingTime.total <= 0) {
-      countdownSpan.innerHTML = `<span class="bg-red-500 text-white px-2 py-1 rounded shake-alert">⏰  elapsed!</span>`;
+      countdownSpan.innerHTML = `<span class="bg-red-300 text-white px-8 py-1 rounded flex justify-between gap-1  shake-alert duration-400 transition-all">  elapsed!</span>`;
       if (!item.alerted) {
         item.alerted = true;
         localStorage.setItem("myList", JSON.stringify(arr));
