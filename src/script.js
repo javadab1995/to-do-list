@@ -179,7 +179,7 @@ function checkTimers() {
     const remainingTime = getRemainingTime(item.deadline);
 
     if (remainingTime.total <= 0) {
-      countdownSpan.innerHTML = `<span class="bg-red-300 text-white px-8 py-1 rounded flex justify-between gap-1  shake-alert duration-400 transition-all">  elapsed!</span>`;
+      countdownSpan.innerHTML = `<span class="bg-red-300 text-white px-8 py-1 rounded flex justify-between gap-1 shake-alert-e duration-400 transition-all">  elapsed!</span>`;
       if (!item.alerted) {
         item.alerted = true;
         localStorage.setItem("myList", JSON.stringify(arr));
