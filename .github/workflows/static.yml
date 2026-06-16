@@ -18,7 +18,7 @@ jobs:
   # جاب مربوط به نصب و بیلد پروژه
   build:
     runs-on: ubuntu-latest
-     steps:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -26,7 +26,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # نکته: اگر خط cache: 'npm' را در اینجا دارید، موقتاً آن را حذف یا کامنت کنید
 
       - name: Update npm and Clean Cache
         run: |
